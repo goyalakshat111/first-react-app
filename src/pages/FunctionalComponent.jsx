@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import BaseHoc from "../hoc/BaseHoc";
 
 const FunctionalComponent = (props) => {
 
@@ -11,6 +12,25 @@ const FunctionalComponent = (props) => {
 
     const { name, age, company, setName } = props;
 
+    useEffect(() => {
+        console.log("Component did mount");
+    }, []);
+
+    useEffect(() => {
+        console.log("Component did update");
+    });
+
+    useEffect(() => {
+        console.log("Only on changing name");
+    }, [changeName]);
+
+    useEffect(() => {
+        console.log("Only on props change");
+    }, [setName]);
+
+    useEffect(() => {
+        return console.log("Component did unmount");
+    }, []);
 
     return (
         <div>
@@ -27,4 +47,4 @@ const FunctionalComponent = (props) => {
     );
 }
 
-export default FunctionalComponent;
+export default BaseHoc(FunctionalComponent);

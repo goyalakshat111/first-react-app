@@ -1,23 +1,32 @@
-import './App.css';
-import ClassComponent from './components/ClassComponent';
-import FunctionalComponent from './components/FunctionalComponent';
-import { useState } from 'react';
+import "./App.css";
+import ClassComponent from "./pages/ClassComponent";
+import FunctionalComponent from "./pages/FunctionalComponent";
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+
+
 function App() {
-
-
   const company = "Devtown";
-  const [name, setName] = useState("Akshat");
 
+  const [name, setName] = useState("Aditya");
 
   return (
-    <div className="App">
-      <h1>Class Component</h1>
-      <ClassComponent />
-      <br />
-      <h1>Functional Component</h1>
-      <FunctionalComponent name={name} age={21} company={company} setName={setName} />
-    </div>
+    <Routes>
+      <Route path="/" element={<ClassComponent />} />
+      <Route
+        path="/functional-component"
+        element={
+          <FunctionalComponent
+            name={name}
+            age={20}
+            company={company}
+            setName={setName}
+          />
+        }
+      />
+    </Routes>
   );
 }
+
 
 export default App;
